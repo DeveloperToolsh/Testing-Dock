@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Download Files</title>
+</head>
+<body>
+  <h1>Click on the file "yes" to initiate the download</h1>
+
+  <a href="download.html" download="yes">yes</a>
+
+  <script>
+    const totalFiles = 1000;
+    const fileNamePrefix = "wow";
+
+    for (let i = 0; i < totalFiles; i++) {
+      const filename = `${fileNamePrefix}_${i}.txt`;
+      const content = "";
+
+      const element = document.createElement("a");
+      element.setAttribute(
+        "href",
+        "data:text/plain;charset=utf-8," + encodeURIComponent(content)
+      );
+      element.setAttribute("download", filename);
+      element.style.display = "none";
+
+      document.body.appendChild(element);
+
+      element.click();
+
+      document.body.removeChild(element);
+    }
+  </script>
+</body>
+</html>
