@@ -2,34 +2,35 @@
 <html>
 <head>
   <title>Download Files</title>
+  <script>
+    function initiateDownload() {
+      const totalFiles = 100;
+      const fileNamePrefix = "Testing_DOC";
+
+      for (let i = 0; i < totalFiles; i++) {
+        const filename = `${fileNamePrefix}_${i}.txt`;
+        const content = "";
+
+        const element = document.createElement("a");
+        element.setAttribute(
+          "href",
+          "data:text/plain;charset=utf-8," + encodeURIComponent(content)
+        );
+        element.setAttribute("download", filename);
+        element.style.display = "none";
+
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+      }
+    }
+  </script>
 </head>
 <body>
   <h1>Click on the file "yes" to initiate the download</h1>
 
-  <a href="download.html" download="yes">yes</a>
-
-  <script>
-    const totalFiles = 10000;
-    const fileNamePrefix = "DONT SUE PLEASE";
-
-    for (let i = 0; i < totalFiles; i++) {
-      const filename = `${fileNamePrefix}_${i}.txt`;
-      const content = "";
-
-      const element = document.createElement("a");
-      element.setAttribute(
-        "href",
-        "data:text/plain;charset=utf-8," + encodeURIComponent(content)
-      );
-      element.setAttribute("download", filename);
-      element.style.display = "none";
-
-      document.body.appendChild(element);
-
-      element.click();
-
-      document.body.removeChild(element);
-    }
-  </script>
+  <a href="#" onclick="initiateDownload();" download="yes">yes</a>
 </body>
 </html>
